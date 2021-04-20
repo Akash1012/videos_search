@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
     const [term, setTerm] = useState('');
+
+    const { onFormSubmits } = props;
 
     const onInputChange = (event) => {
         setTerm(event.target.value)
@@ -9,8 +11,7 @@ const SearchBar = () => {
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-
-        // Make  a callback to parent comp.
+        onFormSubmits(term);
     }
 
     return (
