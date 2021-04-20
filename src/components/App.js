@@ -8,7 +8,7 @@ import VideoDetails from './videoDetails'
 const App = () => {
 
     const [videos, setVideos] = useState([]);
-    const [selectedVideo, setSelectedVided] = useState(null);
+    const [selectedVideo, setSelectedVideo] = useState(null);
 
     const onTermSubmit = async (term) => {
         const response = await youtube.get('/search', {
@@ -21,13 +21,13 @@ const App = () => {
     }
 
     const onVideoSelect = (video) => {
-        console.log("VIdeo", video)
-        setSelectedVided(video)
+        setSelectedVideo(video)
     }
 
     return (
         <div className="ui container">
             <SearchBar onFormSubmits={onTermSubmit} />
+            <VideoDetails video={selectedVideo} />
             <VideoList videos={videos} onVideoSelect={onVideoSelect} />
         </div>
     )
